@@ -1,0 +1,37 @@
+.app {
+	.app__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.app__title {
+			font-weight: 900;
+			font-size: 3rem;
+		}
+		.app__country--selector {
+			padding: 2rem;
+		}
+
+		.selector__container {
+			padding: 8px 8px !important;
+			background-color: #fff !important;
+		}
+		.MuiSelect-select:focus {
+			background-color: transparent !important;
+		}
+	}
+
+	@media only screen and (max-width: 900px) {
+		.app__body {
+			flex-direction: column;
+
+			.app__title {
+				font-weight: 900;
+				font-size: 2.5rem;
+			}
+			.app__country--selector {
+				padding: 1.5rem;
+			}
+		}
+	}
+}
