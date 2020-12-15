@@ -1,32 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
 function App() {
-	const [age, setAge] = useState("");
+	const [countries, setCountries] = useState([]);
 
-	const handleChange = (event) => {
-		setAge(event.target.value);
-	};
+	// const handleChange = (event) => {
+	// 	setCountries(event.target.value);
+	// };
+	useEffect(() => {
+		const countriesData = async () => {
+			await fetch("https://disease.sh/v3/covid-19/countries")
+				.then((res) => res.json())
+				.then((data) => {
+					const countriesAll = data.map((country) => ({
+						name: country.country,
+						value: country.countryInfo.iso3,
+					}));
+					setCountries(countriesAll);
+				});
+		};
+
+		countriesData();
+	}, []);
+
 	return (
 		<div className='app'>
 			<div className='app__body'>
 				<h1 className='app__title'>Covid-19 Tracker</h1>
-				<div className='app__country--selector'>
+				<div className='app__country__selector'>
 					<FormControl variant='filled'>
 						<Select
 							id='demo-simple-select-filled'
-							className='selector__container'
-							value={age}
-							onChange={handleChange}>
-							<MenuItem value='World'>
-								<em>None</em>
-							</MenuItem>
-							<MenuItem value={10}>Ten</MenuItem>
-							<MenuItem value={20}>Twenty</MenuItem>
-							<MenuItem value={30}>Thirty</MenuItem>
+							className='selector__container'>
+							{countries.map((country, index) => {
+								return (
+									<MenuItem value={country.value} key={index}>
+										{country.name}
+									</MenuItem>
+								);
+							})}
 						</Select>
 					</FormControl>
 				</div>
