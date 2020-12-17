@@ -1,5 +1,8 @@
+body {
+	background-color: #eff8ff;
+}
 .app {
-	.app__body {
+	.header__body {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -7,6 +10,7 @@
 		.app__title {
 			font-weight: 900;
 			font-size: 3rem;
+			padding-left: 2rem;
 		}
 		.app__country__selector {
 			padding: 2rem;
@@ -19,10 +23,31 @@
 		.MuiSelect-select:focus {
 			background-color: transparent !important;
 		}
+		.MuiFilledInput-input {
+			padding-top: 8px !important;
+			padding-bottom: 8px !important;
+			padding-left: 12px !important;
+			padding-right: 30px !important;
+		}
+	}
+
+	.stats {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 1rem;
+		align-items: center;
+		.singleCard {
+			flex: 1;
+		}
+	}
+
+	.todaysNumber {
+		font-weight: 900 !important;
 	}
 
 	@media only screen and (max-width: 900px) {
-		.app__body {
+		.header__body {
 			flex-direction: column;
 
 			.app__title {
