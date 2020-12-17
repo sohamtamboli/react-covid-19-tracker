@@ -6,6 +6,7 @@ import Select from "@material-ui/core/Select";
 
 function App() {
 	const [countries, setCountries] = useState([]);
+	const [singleCountry, setSingleCountry] = useState("worldwide");
 
 	// const handleChange = (event) => {
 	// 	setCountries(event.target.value);
@@ -26,6 +27,12 @@ function App() {
 		countriesData();
 	}, []);
 
+	const selectCountry = (e) => {
+		const selectedCountry = e.target.value;
+
+		setSingleCountry(selectedCountry);
+	};
+
 	return (
 		<div className='app'>
 			<div className='app__body'>
@@ -34,7 +41,10 @@ function App() {
 					<FormControl variant='filled'>
 						<Select
 							id='demo-simple-select-filled'
+							value={singleCountry}
+							onChange={selectCountry}
 							className='selector__container'>
+							<MenuItem value='worldwide'>Worldwide</MenuItem>
 							{countries.map((country, index) => {
 								return (
 									<MenuItem value={country.value} key={index}>
