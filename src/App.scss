@@ -1,6 +1,35 @@
+// Global
+
 body {
-	background-color: #eff8ff;
+	// background-color: #eff8ff;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url("./assets/bg2.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100vh;
 }
+
+// App
+.app {
+	display: flex;
+	justify-content: space-between;
+
+	.app__left {
+		flex: 0.7;
+		padding: 1rem 0;
+	}
+	.app__right {
+		flex: 0.3;
+		padding: 1.8rem;
+	}
+}
+@media only screen and (max-width: 1024px) {
+	.app {
+		flex-direction: column;
+	}
+}
+
+//  App header
 .app {
 	.header__body {
 		display: flex;
@@ -11,6 +40,7 @@ body {
 			font-weight: 900;
 			font-size: 3rem;
 			padding-left: 2rem;
+			color: #fff;
 		}
 		.app__country__selector {
 			padding: 2rem;
@@ -31,21 +61,6 @@ body {
 		}
 	}
 
-	.stats {
-		display: flex;
-		justify-content: space-between;
-		gap: 1rem;
-		padding: 1rem;
-		align-items: center;
-		.singleCard {
-			flex: 1;
-		}
-	}
-
-	.todaysNumber {
-		font-weight: 900 !important;
-	}
-
 	@media only screen and (max-width: 900px) {
 		.header__body {
 			flex-direction: column;
@@ -57,6 +72,116 @@ body {
 			.app__country__selector {
 				padding: 1.5rem;
 			}
+		}
+	}
+}
+
+// Stat cards
+
+.stats {
+	display: flex;
+	// flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	align-items: center;
+	.singleCard {
+		flex: 1;
+	}
+}
+
+.todaysNumber {
+	font-weight: 700 !important;
+}
+
+//  Side Table
+
+.table {
+	overflow-y: scroll;
+	height: 680px;
+	tr {
+		display: flex;
+		justify-content: space-between;
+
+		th {
+			font-weight: 700;
+			padding-top: 0.8rem;
+			padding-bottom: 0.8rem;
+			font-size: 1rem;
+		}
+
+		td {
+			padding: 0.5rem;
+			font-weight: 400;
+		}
+	}
+	tr:nth-of-type(even) {
+		background-color: #eff8ff;
+	}
+}
+.table__title {
+	margin-bottom: 1rem;
+	font-weight: 900;
+}
+
+//  Single Country
+.country__card {
+	height: 680px;
+
+	.country__card-title {
+		margin-bottom: 1rem;
+		font-weight: 900;
+	}
+	.country__info-container > div {
+		padding: 1rem 0.5rem;
+		display: flex;
+		justify-content: space-between;
+
+		strong {
+			font-weight: 700;
+		}
+	}
+
+	.country__card-image {
+		height: 250px;
+		width: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		border: 0.5px solid #000;
+		border-radius: 10px;
+		object-fit: cover;
+	}
+
+	// sidebar image responsive rules
+	@media only screen and (min-width: 2000px) {
+		.country__card-image {
+			height: 350px;
+		}
+	}
+	@media only screen and (max-width: 1200px) {
+		.country__card-image {
+			height: 250px;
+		}
+	}
+	@media only screen and (max-width: 1024px) {
+		.country__card-image {
+			height: 450px;
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		.country__card-image {
+			height: 300px;
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		.country__card-image {
+			height: 200px;
+		}
+	}
+	@media only screen and (max-width: 390px) {
+		.country__card-image {
+			height: 180px;
 		}
 	}
 }
